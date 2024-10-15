@@ -1,30 +1,26 @@
-
-# Online Python - IDE, Editor, Compiler, Interpreter
-
-def quicksort(arr):
-    quicksortfn(arr,0,len(arr)-1)
-    
-def quicksortfn(arr, left, right):
-    if left<right:
-        partition_pos= partitionnsort(arr, left, right)
-        quicksortfn(arr, left,partition_pos-1)
-        quicksortfn(arr, partition_pos+1,right)
-
-def partitionnsort(arr, left, right):
-    i = left
-    j = right-1
-    pivot = arr[right]
-    while i<j:
-        while arr[i]< pivot and i<right:
-            i+=1 
-        while arr[j]> pivot and j>left:
+def sort(arr, low, high):
+    if(low >= high):
+        return
+    partition = sortfn(arr,low,high)
+    sort(arr, low, partition-1)
+    sort(arr, partition+1, high)
+def sortfn(arr, low,high):
+    pivot = arr[high]
+    i = low
+    j = high
+    while i < j:
+        while arr[i] < pivot:
+            i+=1
+        while arr[j] > pivot:
             j-=1
-        if i<j:
-            arr[i],arr[j] = arr[j],arr[i]
-    if arr[i] > pivot:
-        arr[i],arr[right]=arr[right],arr[i]
-    return i;
-
-arr =[9,8,7,6,5,4,3,2,1]
-quicksort(arr)
+        if(i< j):
+            temp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = temp
+            i+=1
+            j-=1
+    return j
+arr = [5,4,3,2,1]
+print(arr)
+sort(arr, 0, len(arr)-1)
 print(arr)
