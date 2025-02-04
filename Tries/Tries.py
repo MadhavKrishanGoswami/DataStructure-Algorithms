@@ -10,7 +10,7 @@ class Trie:
         visiting_node = self.root
         
         for letter in word:
-            if letter not in node.children:
+            if letter not in visiting_node.children:
                 visiting_node.children[letter] = TrieNode()
             visiting_node = visiting_node.children[letter]  
         visiting_node.is_end = True
