@@ -1,6 +1,6 @@
 from ..Trees.Trees import TreeNode
 
-def Traversal(root: TreeNode) -> List[int]:
+def Traversal(root: TreeNode) -> list:
     if not root:
         return []
     return Traversal(root.left) + [root.val] + Traversal(root.right)
